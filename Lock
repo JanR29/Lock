@@ -5,7 +5,7 @@ if game.PlaceId == 2788229376 then
         Duration = 1.5
     })
 end
-wait(2.5)
+wait(3)
 -- Toggle key is Q
 getgenv().Target = true
 -- Configuration
