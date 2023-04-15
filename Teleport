@@ -1,3 +1,12 @@
+if not game["Loaded"] or not game:GetService("Players")["LocalPlayer"] then
+game["Loaded"]:Wait()
+game:WaitForChild(game:GetService("Players"))
+game:GetService("Players"):WaitForChild(game:GetService("Players").LocalPlayer.Name)
+repeat
+    game:GetService("RunService").RenderStepped:Wait()
+until game:GetService("Players").LocalPlayer.Character
+end
+
 local userInputService = game:GetService("UserInputService")
 
 local function teleportToMousePosition()
@@ -18,3 +27,10 @@ userInputService.InputBegan:Connect(function(input, gameProcessedEvent)
         teleportToMousePosition()
     end
 end)
+if game.PlaceId == 2788229376 then
+    game.StarterGui:SetCore("SendNotification", {
+        Title    = "Completely loaded😎",
+        Text     = "Press G to teleport",
+        Duration = 5.5
+    })
+end
