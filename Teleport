@@ -1,0 +1,20 @@
+local userInputService = game:GetService("UserInputService")
+
+local function teleportToMousePosition()
+    local player = game:GetService("Players").LocalPlayer
+    local mouse = player:GetMouse()
+    local character = player.Character
+    if not character or not character:FindFirstChild("HumanoidRootPart") then
+        return
+    end
+    local rootPart = character.HumanoidRootPart
+    local targetPosition = mouse.Hit.p
+    local lookVector = rootPart.CFrame.LookVector
+    rootPart.CFrame = CFrame.new(targetPosition, targetPosition + lookVector)
+end
+
+userInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+    if not gameProcessedEvent and input.KeyCode == Enum.KeyCode.G then
+        teleportToMousePosition()
+    end
+end)
